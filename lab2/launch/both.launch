@@ -1,0 +1,13 @@
+<launch>
+	<arg name="model" default='$(find lab2)/urdf/moveable.urdf' />
+	<arg name="gui" default="True" />
+	<param name="robot_description" textfile="$(arg model)" />
+	<param name="use_gui" value="$(arg gui)"/>
+	<param name="link_1" type="double" value="0.2" />
+	<param name="link_2" type="double" value="0.4" />
+	<node pkg="lab2" name="NONKDL_DKIN" type="NONKDL_DKIN"/>
+	<node pkg="lab2" name="KDL_DKIN" type="KDL_DKIN"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find lab2)/urdf.rviz" required="true" />
+</launch>
