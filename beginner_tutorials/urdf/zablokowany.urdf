@@ -1,0 +1,97 @@
+<robot name="zablokowany">
+  <link name="base_link">
+        <visual>
+                <geometry>
+                        <box size="1 1 0.2"/>
+                </geometry>
+		<material name="white">
+        	<color rgba="1 1 1 1"/>
+      		</material>
+        </visual>
+  </link>
+
+  <link name="link1">
+        <visual>
+                <geometry>
+                        <box size="0.1 0.1 1"/>
+                </geometry>
+		<material name="blue">
+        	<color rgba="0 0 1 1"/>
+      		</material>
+        </visual>
+  </link>
+
+  <link name="link2">
+        <visual>
+                <geometry>
+                        <cylinder length="0.1" radius="0.05"/>
+                </geometry>
+		<material name="lime">
+        	<color rgba="0 255 0 1"/>
+      		</material>
+        </visual>
+  </link>
+
+  <link name="arm1">
+        <visual>
+                <geometry>
+                        <box size = "0.5 .05 .05"/>
+                </geometry>
+                <material name="blue">
+                <color rgba="0 0 1 1"/>
+                </material>
+                <origin xyz = "0.25 0 0"/>
+        </visual>
+  </link>
+
+  <link name="link3">
+        <visual>
+                <geometry>
+                        <cylinder length="0.1" radius="0.05"/>
+                </geometry>
+		<material name="lime">
+        	<color rgba="0 255 0 1"/>
+      		</material>
+        </visual>
+  </link>
+
+  <link name="arm2">
+        <visual>
+                <geometry>
+                        <box size = "0.5 .05 .05"/>
+                </geometry>
+                <material name="blue">
+                <color rgba="0 0 1 1"/>
+                </material>
+                <origin xyz = "0.25 0 0"/>
+        </visual>
+  </link>
+  
+  <joint name="joint1" type="fixed">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0" />
+  </joint>
+
+  <joint name="joint2" type="fixed">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0.5" rpy="-1.57 0 0" />
+  </joint>
+
+  <joint name="link2_arm1" type="fixed">
+    <parent link="link2"/>
+    <child link="arm1"/>
+  </joint>
+
+  <joint name="joint3" type="fixed">
+    <parent link="arm1"/>
+    <child link="link3"/>  
+    <origin xyz="0.5 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="link3_arm2" type="fixed">
+    <parent link="link3"/>
+    <child link="arm2"/>
+  </joint>
+</robot>
