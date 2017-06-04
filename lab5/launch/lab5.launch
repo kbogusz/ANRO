@@ -1,0 +1,17 @@
+<launch>
+	
+	<node pkg="lab5" name="oint1" type="oint1"/>
+	<node pkg="lab5" name="ikin" type="ikin"/>
+	<arg name="model" value="$(find lab5)/urdf/movable.urdf" />
+	<arg name="gui" value="False" />
+
+	<param name="robot_description" textfile="$(arg model)" />
+	<param name="use_gui" value="$(arg gui)"/>
+	
+	<param name="a2" value="0.4" />
+	<param name="a3" value="0.2" />
+    	<param name="d1" value="0.2" />
+    
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find lab5)/urdf.rviz" required="true" />
+</launch>
